@@ -21,7 +21,6 @@ class GalleryViewModel @Inject constructor(
         unSplashRepository.getSearchResults(queryString).cachedIn(viewModelScope)
     }
 
-
     fun searchPhotos(query:String){
         currentQuery.value = query
     }

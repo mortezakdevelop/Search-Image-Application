@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import com.example.imagesearchapp.R
 import com.example.imagesearchapp.adapter.UnSplashPhotoAdapter
+import com.example.imagesearchapp.adapter.UnSplashPhotoLoadStateAdapter
 import com.example.imagesearchapp.databinding.FragmentGalleryBinding
 import com.example.imagesearchapp.viewmodel.GalleryViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,7 +31,10 @@ class GalleryFragment : Fragment() {
         val adapter = UnSplashPhotoAdapter()
         fragmentGalleryBinding.apply {
             recyclerView.setHasFixedSize(true)
-            recyclerView.adapter = adapter
+            recyclerView.adapter = adapter.withLoadStateHeaderAndFooter(
+                header = UnSplashPhotoLoadStateAdapter {adapter.retry()},
+                footer = UnSplashPhotoLoadStateAdapter {adapter.retry()}
+            )
         }
 
         viewModel.photos.observe(viewLifecycleOwner){
