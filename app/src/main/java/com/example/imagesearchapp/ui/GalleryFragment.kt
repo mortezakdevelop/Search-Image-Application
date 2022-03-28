@@ -1,13 +1,11 @@
 package com.example.imagesearchapp.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import com.example.imagesearchapp.R
 import com.example.imagesearchapp.adapter.UnSplashPhotoAdapter
 import com.example.imagesearchapp.adapter.UnSplashPhotoLoadStateAdapter
@@ -32,14 +30,45 @@ class GalleryFragment : Fragment() {
         fragmentGalleryBinding.apply {
             recyclerView.setHasFixedSize(true)
             recyclerView.adapter = adapter.withLoadStateHeaderAndFooter(
-                header = UnSplashPhotoLoadStateAdapter {adapter.retry()},
-                footer = UnSplashPhotoLoadStateAdapter {adapter.retry()}
+                header = UnSplashPhotoLoadStateAdapter { adapter.retry() },
+                footer = UnSplashPhotoLoadStateAdapter { adapter.retry() }
             )
         }
 
-        viewModel.photos.observe(viewLifecycleOwner){
+        viewModel.photos.observe(viewLifecycleOwner) {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
+
+
+        setHasOptionsMenu(true)
+
         return fragmentGalleryBinding.root
     }
+
+    //create search menu
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.gallery_menu, menu)
+
+        val searchItem = menu.findItem(R.id.action_search)
+        val searchView = searchItem.actionView as SearchView
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    fragmentGalleryBinding.recyclerView.scrollToPosition(0)
+                    viewModel.searchPhotos(query)
+                    searchView.clearFocus()
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return true
+            }
+
+        })
+
+    }
+
 }
