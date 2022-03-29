@@ -9,5 +9,17 @@
         android:id="@+id/galleryFragment"
         android:name="com.example.imagesearchapp.ui.GalleryFragment"
         android:label="fragment_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_galleryFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.imagesearchapp.ui.DetailFragment"
+        android:label="DetailFragment" >
+        <argument
+            android:name="photo"
+            app:argType="com.example.imagesearchapp.model.UnSplashPhoto" />
+    </fragment>
 </navigation>
