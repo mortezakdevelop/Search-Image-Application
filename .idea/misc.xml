@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/morteza/AndroidStudioProjects/ImageSearchApp/app/src/main/res/drawable/ic_baseline_cloud_download_24.xml" value="0.1" />
         <entry key="..\:/Users/morteza/AndroidStudioProjects/ImageSearchApp/app/src/main/res/drawable/ic_error.xml" value="0.1135" />
         <entry key="..\:/Users/morteza/AndroidStudioProjects/ImageSearchApp/app/src/main/res/layout/activity_main.xml" value="0.15715579710144928" />
-        <entry key="..\:/Users/morteza/AndroidStudioProjects/ImageSearchApp/app/src/main/res/layout/fragment_detail.xml" value="0.1" />
+        <entry key="..\:/Users/morteza/AndroidStudioProjects/ImageSearchApp/app/src/main/res/layout/fragment_detail.xml" value="0.25" />
         <entry key="..\:/Users/morteza/AndroidStudioProjects/ImageSearchApp/app/src/main/res/layout/unsplash_photo_item.xml" value="0.1" />
         <entry key="..\:/Users/morteza/AndroidStudioProjects/ImageSearchApp/app/src/main/res/menu/gallery_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/sahar.r/AndroidStudioProjects/ImageSearchApp/app/src/main/res/drawable/view_shape.xml" value="0.3828125" />
